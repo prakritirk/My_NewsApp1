@@ -3,7 +3,6 @@ package com.example.android.my_newsapp1;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,16 +46,19 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         categoryView.setText( currentNews.getSection() );
 
+        TextView authorView = (TextView) listItemView.findViewById( R.id.author );
+        authorView.setText( currentNews.getAuthor() );
+
 
         TextView dateView = (TextView) listItemView.findViewById( R.id.date );
         //Format the date to remove time stamp
         String date = currentNews.getDate();
         try {
-            Date dateNews =  new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(date);
+            Date dateNews = new SimpleDateFormat( "yyyy-MM-dd'T'HH:mm:ss'Z'" ).parse( date );
 
-            String formattedDate = new SimpleDateFormat("dd/MM/yyyy").format(dateNews);
-            dateView.setText(formattedDate);
-           // Log.d("ADebugTag", "Value: " + formattedDate);
+            String formattedDate = new SimpleDateFormat( "dd/MM/yyyy" ).format( dateNews );
+            dateView.setText( formattedDate );
+
         } catch (ParseException e) {
             e.printStackTrace();
         }

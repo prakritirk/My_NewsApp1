@@ -22,9 +22,9 @@ import java.util.List;
 public class NewsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<News>> {
 
     public static final String LOG_TAG = NewsActivity.class.getName();
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?api-key=62af3243-cd1c-4aa9-9afc-7f2e1ad5b19a";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?order-by=newest&show-tags=contributor&page-size=15&q=politics&api-key=62af3243-cd1c-4aa9-9afc-7f2e1ad5b19a";
     /**
-     * Constant value for the earthquake loader ID. We can choose any integer.
+     * Constant value for the news loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
      */
     private static final int NEWS_LOADER_ID = 1;
@@ -39,26 +39,26 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView( R.layout.activity_news );
 
         // Find a reference to the {@link ListView} in the layout
-        ListView earthquakeListView = (ListView) findViewById( R.id.list );
+        ListView newsListView = (ListView) findViewById( R.id.list );
 
         mEmptyStateTextView = (TextView) findViewById( R.id.empty_view );
-        earthquakeListView.setEmptyView( mEmptyStateTextView );
+        newsListView.setEmptyView( mEmptyStateTextView );
 
 
-        // Create a new adapter that takes an empty list of earthquakes as input
+        // Create a new adapter that takes an empty list of newss as input
         mAdapter = new NewsAdapter( this, new ArrayList<News>() );
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
-        earthquakeListView.setAdapter( mAdapter );
+        newsListView.setAdapter( mAdapter );
 
 
-        earthquakeListView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+        newsListView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 News currentNews = mAdapter.getItem( i );
                 String link = currentNews.getLink();
-                Uri earthquakeUri = Uri.parse( link );
-                Intent intent = new Intent( Intent.ACTION_VIEW, earthquakeUri );
+                Uri newsUri = Uri.parse( link );
+                Intent intent = new Intent( Intent.ACTION_VIEW, newsUri );
                 startActivity( intent );
 
             }
@@ -96,15 +96,15 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     @Override
-    public void onLoadFinished(Loader<List<News>> loader, List<News> earthquakes) {
-        // Set empty state text to display "No earthquakes found."
+    public void onLoadFinished(Loader<List<News>> loader, List<News> news) {
+        // Set empty state text to display "No news found."
         ProgressBar progressView = (ProgressBar) findViewById( R.id.progress_view );
         progressView.setVisibility( View.GONE );
 
         mEmptyStateTextView.setText( R.string.no_news );
         mAdapter.clear();
-        if (earthquakes != null && !earthquakes.isEmpty()) {
-            mAdapter.addAll( earthquakes );
+        if (news != null && !news.isEmpty()) {
+            mAdapter.addAll( news );
         }
 
     }

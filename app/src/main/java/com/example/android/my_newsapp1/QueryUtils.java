@@ -171,8 +171,17 @@ public final class QueryUtils {
                 String title = currentNews.getString( "webTitle" );
                 String link = currentNews.getString( "webUrl" );
                 String date = currentNews.getString( "webPublicationDate" );
+                String author = "Author:NA";
+                JSONArray tagsArray = currentNews.getJSONArray( "tags" );
+                int tagLength = tagsArray.length();
 
-                News news1 = new News( section, title, date, link );
+                if (tagLength == 1) {
+                    JSONObject currentAuthor = tagsArray.getJSONObject( 0 );
+
+                    author = "Author:" + currentAuthor.getString( "webTitle" );
+
+                }
+                News news1 = new News( section, title, date, link, author );
                 news.add( news1 );
 
             }

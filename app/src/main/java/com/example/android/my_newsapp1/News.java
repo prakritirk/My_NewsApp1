@@ -39,14 +39,17 @@ public class News {
      * @param newsSection is the category of news
      * @param newsTitle   is the Title of news
      * @param newsLink    is the Title of news
+     * @param newsAuthor  is the author of news
      */
-    public News(String newsSection, String newsTitle, String newsDate, String newsLink) {
+    public News(String newsSection, String newsTitle, String newsDate, String newsLink, String newsAuthor) {
         mTitle = newsTitle;
         mSection = newsSection;
         mDate = newsDate;
         mLink = newsLink;
+        mAuthor = newsAuthor;
+
     }
-    
+
     /**
      * Get the date of news
      */
@@ -68,6 +71,13 @@ public class News {
 
     public String getTitle() {
         return mTitle;
+    }
+
+    /**
+     * Get the author of news
+     */
+    public String getAuthor() {
+        return mAuthor;
     }
 
 }

@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">My_NewsApp1</string>
-    <string name="no_news">No news found.</string>
-    <string name="no_internet">No internet connection.</string>
+    <string name="no_news">Sorry, Currently we do not have new news for you.Please check back later.</string>
+    <string name="no_internet">Please check your internet connection and try again!.</string>
 </resources>
