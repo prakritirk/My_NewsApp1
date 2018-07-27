@@ -63,8 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:textColor="@color/textColorNewsSection"
-            android:textStyle="bold"
             android:textSize="@dimen/text_12sp"
+            android:textStyle="bold"
             tools:text="Author" />
 
         <TextView

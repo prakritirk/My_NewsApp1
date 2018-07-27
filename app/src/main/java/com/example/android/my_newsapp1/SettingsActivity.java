@@ -25,23 +25,23 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate( savedInstanceState );
             addPreferencesFromResource( R.xml.settings_main );
 
-            Preference newsCategory = findPreference(getString(R.string.settings_category_key));
-            bindPreferenceSummaryToValue(newsCategory);
-            
+            Preference newsCategory = findPreference( getString( R.string.settings_category_key ) );
+            bindPreferenceSummaryToValue( newsCategory );
+
         }
 
         private void bindPreferenceSummaryToValue(Preference preference) {
-            preference.setOnPreferenceChangeListener(this);
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(preference.getContext());
-            String preferenceString = preferences.getString(preference.getKey(), "");
-            onPreferenceChange(preference, preferenceString);
+            preference.setOnPreferenceChangeListener( this );
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences( preference.getContext() );
+            String preferenceString = preferences.getString( preference.getKey(), "" );
+            onPreferenceChange( preference, preferenceString );
         }
 
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
-            preference.setSummary(stringValue);
+            preference.setSummary( stringValue );
             return true;
         }
     }

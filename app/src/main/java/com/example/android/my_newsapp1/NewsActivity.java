@@ -32,9 +32,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
      * This really only comes into play if you're using multiple loaders.
      */
     private static final int NEWS_LOADER_ID = 1;
+    private static final String STUDENT_KEY = "62af3243-cd1c-4aa9-9afc-7f2e1ad5b19a";
     private NewsAdapter mAdapter;
     private TextView mEmptyStateTextView;
-    private static final String STUDENT_KEY = "62af3243-cd1c-4aa9-9afc-7f2e1ad5b19a";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,22 +95,20 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
         Log.v( LOG_TAG, "onCreateLoader called" );
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String newsCategory = sharedPrefs.getString(
-                getString(R.string.settings_category_key),
-                getString(R.string.settings_category_default));
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences( this );
+        String newsCategory = sharedPrefs.getString( getString( R.string.settings_category_key ), getString( R.string.settings_category_default ) );
 
         String category = newsCategory.toLowerCase();
 
-        Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
+        Uri baseUri = Uri.parse( GUARDIAN_REQUEST_URL );
         Uri.Builder uriBuilder = baseUri.buildUpon();
-        if (!category.equalsIgnoreCase( "all" )){
-            uriBuilder.appendQueryParameter("section", category);
+        if (!category.equalsIgnoreCase( "all" )) {
+            uriBuilder.appendQueryParameter( "section", category );
         }
-        uriBuilder.appendQueryParameter("order-by", "newest");
-        uriBuilder.appendQueryParameter("show-tags", "contributor");
-        uriBuilder.appendQueryParameter("page-size", "15");
-        uriBuilder.appendQueryParameter("api-key", STUDENT_KEY);
+        uriBuilder.appendQueryParameter( "order-by", "newest" );
+        uriBuilder.appendQueryParameter( "show-tags", "contributor" );
+        uriBuilder.appendQueryParameter( "page-size", "15" );
+        uriBuilder.appendQueryParameter( "api-key", STUDENT_KEY );
 
         return new NewsLoader( this, uriBuilder.toString() );
 
