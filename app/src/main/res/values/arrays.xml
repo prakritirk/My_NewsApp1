@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--News category names -->
+    <string-array name="categories">
+        <item>@string/all</item>
+        <item>@string/world</item>
+        <item>@string/us</item>
+        <item>@string/uk</item>
+        <item>@string/business</item>
+        <item>@string/science</item>
+        <item>@string/politics</item>
+        <item>@string/education</item>
+        <item>@string/society</item>
+        <item>@string/law</item>
+        <item>@string/media</item>
+
+    </string-array>
+
+</resources>

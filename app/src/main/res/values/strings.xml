@@ -2,4 +2,21 @@
     <string name="app_name">My_NewsApp1</string>
     <string name="no_news">Sorry, Currently we do not have new news for you.Please check back later.</string>
     <string name="no_internet">Please check your internet connection and try again!.</string>
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">News Settings</string>
+    <string name="settings_category_label">Categories</string>
+    <string name="settings_category_key">Categories</string>
+    <string name="settings_category_default">All</string>
+    <!--News category names -->
+    <string name="all">All</string>
+    <string name="us">US-News</string>
+    <string name="uk">UK-News</string>
+    <string name="world">World</string>
+    <string name="business">Business</string>
+    <string name="science">Science</string>
+    <string name="politics">Politics</string>
+    <string name="media">Media</string>
+    <string name="education">Education</string>
+    <string name="society">Society</string>
+    <string name="law">Law</string>
 </resources>
